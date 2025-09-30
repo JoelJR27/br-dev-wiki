@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="w-full h-[calc(100vh-6rem)] flex flex-col gap-4 items-center justify-center">
+    <div className="w-full h-[calc(100vh-6rem)] flex flex-col gap-4 items-center justify-center p-4 text-center">
       <h1 className="h1 text-verde">Opa, página não encontrada! </h1>
       <p className="text-cinza texto-regular">
         Desculpe, mas a página que você está procurando não existe. Verifique se

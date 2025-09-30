@@ -1,14 +1,33 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import type { Viewport } from "next";
+import { Nunito_Sans } from "next/font/google";
+import { MobileNavigationProvider } from "@/components/Header/HeaderMobileNavigation/MobileNavigationProvider";
 import Header from "@/components/Header";
+import HeaderMobileNavigation from "@/components/Header/HeaderMobileNavigation";
+
+const nunito = Nunito_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "600", "700", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-nunito",
+});
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
 
 export const metadata: Metadata = {
-  title: "DevWiki",
+  title: "BRDevWiki",
   description:
-    "A DevWiki é uma enciclopédia colaborativa brasileira para desenvolvedores. Encontre artigos, tutoriais e recursos sobre diversas tecnologias de programação. Contribua com seu conhecimento e ajude a comunidade a crescer!",
+    "A BRDevWiki é uma enciclopédia colaborativa brasileira para desenvolvedores. Encontre artigos, tutoriais e recursos sobre diversas tecnologias de programação. Contribua com seu conhecimento e ajude a comunidade a crescer!",
 
   keywords: [
-    "DevWiki",
+    "BRDevWiki",
     "desenvolvimento",
     "programação",
     "tecnologia",
@@ -30,22 +49,24 @@ export const metadata: Metadata = {
     "projetos de código aberto",
     "inovação tecnológica",
   ],
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-  },
 
   icons: {
-    icon: "./favicon.ico",
-    shortcut: "./favicon.ico",
-    apple: "./favicon.ico",
+    icon: "/logo.svg",
+    shortcut: "/logo.svg",
+    apple: "/logo.svg",
   },
 
-  authors: [
-    { name: "Joel Júnior", url: "https://github.com/JoelJR27" },
-    { name: "Douglas Firmino" },
-  ],
+  authors: [{ name: "Joel Júnior", url: "https://github.com/JoelJR27" }],
   creator: "Joel Júnior",
+  category: "technology",
+  openGraph: {
+    title: "BRDevWiki",
+    description:
+      "A BRDevWiki é uma enciclopédia colaborativa brasileira para desenvolvedores. Encontre artigos, tutoriais e recursos sobre diversas tecnologias de programação. Contribua com seu conhecimento e ajude a comunidade a crescer!",
+    siteName: "BRDevWiki",
+    locale: "pt-BR",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -54,9 +75,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
-      <body cz-shortcut-listen="true" className="bg-branco">
-        <Header />
+    <html
+      lang="pt-BR"
+      className={`scroll-smooth ${nunito.className}`}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
+      <body cz-shortcut-listen="true" className="bg-branco relative">
+        <MobileNavigationProvider>
+          <Header />
+          <HeaderMobileNavigation />
+        </MobileNavigationProvider>
         {children}
       </body>
     </html>

@@ -2,10 +2,31 @@
 
 /* Variáveis TailwindCSS */
 @theme {
-  --color-branco: #feefdd;
-  --color-cinza: #524948;
+  --color-branco: #f3f2f0;
+  --color-cinza: #4d4b4b;
   --color-verde: #089746;
   --color-lavanda: #e1e3f4;
-  --color-azul: #ffcc08;
+  --color-azul: #0892a5;
   --color-azul-escuro: #2d2e3c;
+  --color-amarelo: #ffd131;
+  --color-amarelo-claro: #f2ed6f;
+}
+/* Classes utilitárias */
+.h1 {
+  @apply text-[32px] md:text-[40px] lg:text-5xl font-black;
+}
+
+.h2 {
+  @apply text-[24px] md:text-3xl lg:text-4xl font-bold;
+}
+
+.h3 {
+  @apply text-[20px] md:text-[24px] font-semibold;
+}
+
+.texto-light {
+  @apply text-[14px] md:text-[16px] lg:text-[18px] font-light;
+}
+.texto-regular {
+  @apply text-[16px] md:text-[18px] lg:text-[20px] font-normal;
 }
